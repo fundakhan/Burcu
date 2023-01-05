@@ -27,6 +27,10 @@ public class LoginPageElements extends BasePOM{
     @FindBy(id = "flash-messages")
     private WebElement successMessageText;
 
+
+
+
+
     @FindBy(id = "flash")
     private WebElement unsuccessfulMessageText;
 
