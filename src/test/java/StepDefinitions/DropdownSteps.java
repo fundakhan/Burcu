@@ -10,8 +10,6 @@ public class DropdownSteps {
 
     }
 
-
-
     @When("User able to click on the dropdown button")
     public void userAbleToClickOnTheDropdownButton() {
     }
