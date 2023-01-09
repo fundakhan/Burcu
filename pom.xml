@@ -94,4 +94,75 @@
 
     </dependencies>
 
+
+
+    <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                    <configuration>
+
+                        <includes>
+                            <!-- for run class or classes  **/ bulundugu lokasyonu butun klasorlere gore bulabiliyor -->
+                            <include>**/TestRunner_Smoke.java</include>
+                        </includes>
+                        <testFailureIgnore>true</testFailureIgnore>
+
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+
+        <!-- her seferinde class adi yazmamak icin bunu ekledik. jenkins de her calistiginda yukaridaki default olani calistirdi bunlari ekledik ve jenkins e parametre vericez buraya gelip aricak -->
+<!--        <profiles>-->
+<!--            <profile>-->
+<!--                <id>Regression_New</id>-->
+<!--                <build>-->
+<!--                    <plugins>-->
+<!--                        <plugin>-->
+<!--                            <groupId>org.apache.maven.plugins</groupId>-->
+<!--                            <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                            <version>3.0.0-M1</version>-->
+<!--                            <configuration>-->
+
+<!--                                <includes>-->
+<!--                                    &lt;!&ndash; for run class or classes  **/ bulundugu lokasyonu butun klasorlere gore bulabiliyor &ndash;&gt;-->
+<!--                                    <include>**/_05_TestRunnerRegression.java</include>-->
+<!--                                </includes>-->
+<!--                                <testFailureIgnore>true</testFailureIgnore>-->
+
+<!--                            </configuration>-->
+<!--                        </plugin>-->
+<!--                    </plugins>-->
+<!--                </build>-->
+
+<!--            </profile>-->
+
+<!--            <profile>-->
+<!--                <id>Smoke</id>-->
+<!--                <build>-->
+<!--                    <plugins>-->
+<!--                        <plugin>-->
+<!--                            <groupId>org.apache.maven.plugins</groupId>-->
+<!--                            <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                            <version>3.0.0-M1</version>-->
+<!--                            <configuration>-->
+
+<!--                                <includes>-->
+<!--                                    &lt;!&ndash; for run class or classes  **/ bulundugu lokasyonu butun klasorlere gore bulabiliyor &ndash;&gt;-->
+<!--                                    <include>**/_04_TestRunnerSmoke.java</include>-->
+<!--                                </includes>-->
+<!--                                <testFailureIgnore>true</testFailureIgnore>-->
+
+<!--                            </configuration>-->
+<!--                        </plugin>-->
+<!--                    </plugins>-->
+<!--                </build>-->
+<!--            </profile>-->
+<!--        </profiles>-->
+
+
+
 </project>
