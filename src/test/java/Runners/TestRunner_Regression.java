@@ -7,9 +7,9 @@ import io.cucumber.testng.CucumberOptions;
 
         tags = "@Regression", // hangi seneryolarda bu etiket varsa onlar calistirilacak
         features = {"src/test/java/FeatureFiles/"}, //hicbir class eklemedik hepsini otomatik alip calistirir
-        glue = {"StepDefinitions"},
-        plugin ={"html://target//cucumber-reports.html"}
-//        , plugin= {"pretty","html:target/site/cucumber-pretty","json:target/cucumber/cucumber.json"} // Jenkins icin plugin ekledik
+        glue = {"StepDefinitions"}
+
+        , plugin= {"pretty","html:target/site/cucumber-pretty","json:target/cucumber/cucumber.json"} // Jenkins icin plugin ekledik
 
 )
 
