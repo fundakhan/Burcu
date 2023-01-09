@@ -1,5 +1,6 @@
 Feature: Dynamic Controls Functionality
 
+  @Smoke
   Scenario: Dynamic Controls Function Remove Checkbox Test
     Given User Navigate to Dynamic Controls page
     When User able to click the remove button

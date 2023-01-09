@@ -1,11 +1,14 @@
 package POM;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.awt.*;
@@ -47,26 +50,43 @@ public class DragAndDropPageElements extends BasePOM{
     public void userDragAndDropBoxAAndB() throws AWTException {
 
         Actions actions = new Actions(driver);
-        Action action = actions.dragAndDrop(boxA,boxB).release(boxB).build();
-        action.perform();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//header[text()='A']")));
+        actions.clickAndHold(headerA).moveToElement(headerB).release(headerB).build().perform();
+//        Action action = actions.dragAndDrop(boxA,boxB).release(boxB).build();
+//        action.perform();
      //   actions.dragAndDrop(boxA,boxB).release(boxB).build().perform();
-        //actions.dragAndDrop(boxA, boxB).build().perform();
-      //  Robot robot = new Robot ();
-//        robot.mouseMove(350, 226);
-//        robot.keyPress(InputEvent.BUTTON1_MASK);
-//        robot.mouseMove(250, 350);
-//        robot.keyRelease(InputEvent.BUTTON1_MASK);
+     //   actions.dragAndDrop(boxA, boxB).perform();
 
-//        robot.mousePress(InputEvent.BUTTON1_MASK);
-//        robot.mouseMove(20,50);
-//        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+
+
+
+
+
+        Robot robot = new Robot ();
+        // Move the mouse to the draggable element and press the left mouse button
+//        robot.mouseMove(headerA.getLocation().x=100, headerA.getLocation().y=100);
+//        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//
+//        // Move the mouse to the dropzone and release the left mouse button
+//        robot.mouseMove(headerB.getLocation().x, headerB.getLocation().y);
+//        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+
+
+
+
     }
+
+
 
     public void successfullySwitchedBoxAAndB(){
         waitUntilVisibleOfElement(headerA);
         waitUntilVisibleOfElement(headerB);
-        Assert.assertEquals(boxA.getText(), headerB.getText());
-        Assert.assertEquals(boxB.getText(), headerA.getText());
+        String expectedHeaderA = "A";
+        String expectedHeaderB = "B";
+        Assert.assertTrue(headerA.isDisplayed());
+        Assert.assertEquals(expectedHeaderA,headerB.getText());
+        Assert.assertTrue(headerB.isDisplayed());
+        Assert.assertEquals(expectedHeaderB,headerA.getText());
 
     }
 
