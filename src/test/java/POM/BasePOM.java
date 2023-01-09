@@ -3,6 +3,7 @@ package POM;
 import Utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,7 +20,7 @@ import java.time.Duration;
 public class BasePOM {
 
     WebDriver driver = Driver.getDriver();
-    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(90));
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(30));
 
     public void waitUntilVisibleAndClickable(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -35,6 +36,7 @@ public class BasePOM {
         wait.until(ExpectedConditions.urlToBe("http://localhost:7080/windows/new"));
 
     }
+
     public void mouseActions(WebElement element) {
 
         Actions actions = new Actions(driver);
@@ -49,7 +51,8 @@ public class BasePOM {
 
     public void dragAndDropMouseAction(WebElement element1,WebElement element2){
         Actions actions = new Actions(driver);
-        Action action = actions.clickAndHold(element2).moveToElement(element1).release(element2).build();
+
+        Action action = actions.clickAndHold(element1).moveToElement(element2).release(element2).build();
         action.perform();
        // actions.clickAndHold(element2).moveToElement(element1).release(element1).build().perform();
 

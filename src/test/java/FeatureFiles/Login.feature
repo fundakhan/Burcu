@@ -1,5 +1,6 @@
 Feature: Login Functionality
 
+  @Regression @Smoke
   Scenario: Admin User Login To Localhost  Positive Test
     Given User navigates to login page
     When User enters valid credentials with valid username "tomsmith" and valid password "SuperSecretPassword!"

@@ -50,7 +50,7 @@ public class DynamicControlsPageElements extends BasePOM{
     @FindBy(xpath = "//button[text()='Disable']")
     private WebElement disableBtn;
 
-    @FindBy(xpath = "//p[text()='It's disabled!']")
+    @FindBy(id = "message")
     private WebElement itsDisabledText;
 
     public void validationDynamicControlsPage(){
@@ -114,9 +114,10 @@ public class DynamicControlsPageElements extends BasePOM{
     }
 
 
-    public void userSuccessfullyDisabled(){
+    public void userSuccessfullyDisabled()  {
 
         waitUntilVisibleOfElement(itsDisabledText);
+
         Assert.assertTrue(itsDisabledText.isDisplayed());
         String expectedResult = "It's disabled!";
         Assert.assertEquals(expectedResult,itsDisabledText.getText());

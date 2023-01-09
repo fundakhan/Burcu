@@ -58,7 +58,7 @@ public class DynamicControlsSteps {
     }
 
     @Then("User successfully disabled is the box")
-    public void userSuccessfullyDisabledISTheBox() {
+    public void userSuccessfullyDisabledISTheBox()  {
         dynamicControlsPageElements = new DynamicControlsPageElements();
         dynamicControlsPageElements.userSuccessfullyDisabled();
     }

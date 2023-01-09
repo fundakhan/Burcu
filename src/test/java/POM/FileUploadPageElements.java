@@ -5,9 +5,11 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -61,22 +63,33 @@ public class FileUploadPageElements extends BasePOM{
 //
 //        robot.keyPress(KeyEvent.VK_ENTER);
 //        robot.keyRelease(KeyEvent.VK_ENTER);
+        StringSelection stringSelection = new StringSelection("C:\\Users\\funda\\Downloads");
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection,null);
+        Robot robot1 = new Robot();
+     //   robot1.mouseMove(100,200);
+        robot1.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot1.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 
         //put path to your image in a clipboard
-        StringSelection ss = new StringSelection("C:\\Users\\funda\\Downloads\\some-file.txt");
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+        String filePath = "C:\\Users\\funda\\Downloads\\some-file.txt";
+        StringSelection ss = new StringSelection(filePath);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(ss,null);
+//        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+//
 
         //imitate mouse events like ENTER, CTRL+C, CTRL+V
         Robot robot = new Robot();
-        robot.delay(250);
+        wait.until(ExpectedConditions.titleIs("C:\\Users\\funda\\Downloads\\some-file.txt"));
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         robot.keyPress(KeyEvent.VK_CONTROL);
+
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(90);
+
         robot.keyRelease(KeyEvent.VK_ENTER);
 
     }
@@ -87,6 +100,7 @@ public class FileUploadPageElements extends BasePOM{
     }
 
     public void fileSuccessfullyUploaded(){
+
         waitUntilVisibleOfElement(successMessage);
         Assert.assertTrue(successMessage.isDisplayed());
         Assert.assertTrue(successMessage.getText().toLowerCase().contains("Uploaded!".toLowerCase()));
@@ -94,6 +108,11 @@ public class FileUploadPageElements extends BasePOM{
 
     public void dragAndDropTheFile() throws AWTException {
         waitUntilVisibleAndClickable(chooseFileBtn);
+        String filePath = "C:\\Users\\funda\\Downloads\\some-file (13).txt";
+        StringSelection ss = new StringSelection(filePath);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(ss,null);
+
         Robot robot = new Robot();
         // Move the mouse to the starting position for the drag
         robot.mouseMove(100, 100);

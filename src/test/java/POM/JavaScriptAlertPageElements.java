@@ -1,6 +1,7 @@
 package POM;
 
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -12,7 +13,7 @@ public class JavaScriptAlertPageElements extends BasePOM{
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//a[@href='/javascript_alerts']/../../..")
+    @FindBy(xpath = "//*[@id='content']/ul/li[29]/a")
     private WebElement javaScriptAlertsLink;
 
     @FindBy(xpath = "//h3[text()='JavaScript Alerts']")
@@ -31,7 +32,9 @@ public class JavaScriptAlertPageElements extends BasePOM{
     private WebElement SuccessMessage;
 
     public void validationJavaScriptAlertPage() {
-
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,1500)");
+        waitUntilVisibleOfElement(javaScriptAlertsLink);
         javaScriptAlertsLink.click();
         waitUntilVisibleOfElement(JavaScriptAlertsPage);
         Assert.assertTrue(JavaScriptAlertsPage.isDisplayed());

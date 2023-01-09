@@ -1,5 +1,6 @@
 Feature: Dynamic Loading Functionality
 
+  @Smoke
   Scenario: Dynamic Loading Function Example1 Test
     Given User Navigate to Dynamic Loading page
     When User able to click the exampleOne
@@ -7,6 +8,7 @@ Feature: Dynamic Loading Functionality
     And  User able to click start button
     Then User successfully get the message
 
+    @Smoke
   Scenario: Dynamic Loading Function Example2 Test
     Given User Navigate to Dynamic Loading page
     When User able to click the exampleTwo

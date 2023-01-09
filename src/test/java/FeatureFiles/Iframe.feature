@@ -1,5 +1,6 @@
 Feature: Iframe Functionality
 
+  @Regression
   Scenario: Switch to an iframe and type text
     Given Users navigate to the iframe page
     When User switch to iframe and type a text
