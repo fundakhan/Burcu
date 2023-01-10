@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -61,7 +62,10 @@ public class Driver {
                 case "chrome" :
                     // System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY,"true");
                     WebDriverManager.chromedriver().setup(); // setup kisminda artik eski setproperty yazmamiza gerek kalmadi
-                    threadDriver.set(new ChromeDriver());  // bu thread e chrome istenmisse ve yoksa bir tane ekleniyor
+
+                    ChromeOptions options = new ChromeOptions(); // hafizada bu olculerde calistir diyoruz
+                    options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--diasble-gpu","--window-size=1400,2400");
+                    threadDriver.set(new ChromeDriver(options));  // bu thread e chrome istenmisse ve yoksa bir tane ekleniyor
                     break;
 
                 case "firefox" :
