@@ -24,6 +24,9 @@ public class LoginPageElements extends BasePOM{
     @FindBy(css = "button[type='submit']")
     private WebElement loginButton;
 
+
+
+
     @FindBy(id = "flash-messages")
     private WebElement successMessageText;
 
